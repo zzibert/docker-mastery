@@ -1,0 +1,8 @@
+#!/bin/bash
+
+
+docker run --name nginx -d -p 80:80 nginx
+
+docker run --name httpd -d -p 8081:80 httpd
+
+docker run --name mysql -d -p 3306:3306 --env MYSQL_RANDOM_ROOT_PASSWORD=yes mysql
