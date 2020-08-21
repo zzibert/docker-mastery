@@ -1,0 +1,19 @@
+#!/bin/bash
+
+docker run -it --rm --name ubuntu ubuntu:14.04
+
+apt-get update
+
+apt-get install curl
+
+curl --version 7.35.0
+
+docker run -it --rm --name centos centos:7
+
+yum update curl
+
+curl --version 7.29.0
+
+
+
+
