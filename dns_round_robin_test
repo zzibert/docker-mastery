@@ -1,0 +1,13 @@
+#!/bin/bash
+
+docker network create my_private_network
+
+docker container run -d --net my_private_network --net-alias seach elasticsearch:2
+
+docker container run -d --net my_private_network --net-alias seach elasticsearch:2
+
+docker container run --rm --net my_private_network alpine:3.10 nslookup search
+
+docker container run --rm --net my_private_network centos curl -s search:9200
+
+
