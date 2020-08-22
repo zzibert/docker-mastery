@@ -26,6 +26,26 @@
 # - then it needs to copy in all files from current directory
 # - then it needs to start container with command '/sbin/tini -- node ./bin/www'
 # - in the end you should be using FROM, RUN, WORKDIR, COPY, EXPOSE, and CMD commands
+FROM node:6-alpine
+
+
+EXPOSE 3000 
+
+RUN apk add --update tini &&\ 
+    mkdir -p /usr/src/app
+
+WORKDIR /usr/src/app
+
+COPY package.json package.json
+
+RUN npm install &&\
+    npm cache clean --force
+
+COPY . .
+
+CMD ["/sbin/tini", "--", "node", "./bin/www"]
+
+
 
 # Bonus Extra Credit
 # this will not have you setting up a complete image useful for local development, test, and prod
